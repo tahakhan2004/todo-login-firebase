@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import App from "./Component/Todo"
+import Home from "./Screens/Home"
+import About from "./Screens/About"
+import Login from "./Screens/Login"
 
-function App() {
+import { Route, Routes } from 'react-router-dom'
+import Signup from './Screens/SignUP'
+import Protectedroutes from './protectedroutes'
+
+
+const Routing = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+
+{ <Routes>
+  <Route path='/' element={<Login/>}></Route> 
+  <Route path='/signup' element={<Signup/>}></Route> 
+
+  <Route element={<Protectedroutes/>}>
+  <Route path='/todo' element={<App />}></Route>
+  </Route>
+
+ {/* <Route path='/about' element={<About />}></Route>     */}
+</Routes>}
+
+
+   </>
+  ) 
 }
 
-export default App;
+export default Routing
